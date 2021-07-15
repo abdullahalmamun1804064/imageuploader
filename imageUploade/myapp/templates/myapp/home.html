@@ -1,0 +1,23 @@
+{% extends 'myapp/base.html' %}
+{% block content %}
+ <div class='py-5 text-white text-center bg-secondary'>
+      <h1 class="mb-3">Uplode Image</h1>
+      <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" class='btn btn-danger ' value="Uplode">
+      </form>
+ </div>
+  <div class="row">
+    {% for x in img %}
+      <div class="col-4">
+          <div class="card m-2">
+              <img src="{{x.photo.url}}" alt="" class='card-img-top' height="200px">
+              <div class="card-footer">
+                    <small class="text-muted">{{x.date}}</small>
+              </div>
+          </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock content %}
